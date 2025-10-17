@@ -1,0 +1,53 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "BalancehistoryUrbversl5fdl5duenw5jjfck74Staging": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "TableName": "BalanceHistory-urbversl5fdl5duenw5jjfck74-staging",
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "createdAt",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "userId",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "GlobalSecondaryIndexes": [
+          {
+            "IndexName": "byUserId",
+            "KeySchema": [
+              {
+                "AttributeName": "userId",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "createdAt",
+                "KeyType": "RANGE"
+              }
+            ],
+            "Projection": {
+              "ProjectionType": "ALL"
+            }
+          }
+        ],
+        "StreamSpecification": {
+          "StreamViewType": "NEW_AND_OLD_IMAGES"
+        }
+      }
+    }
+  }
+}
