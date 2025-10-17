@@ -1,4 +1,4 @@
-Convert AWS CLI describe-table JSON format file to CloudFormation JSON format file
+# Convert AWS CLI describe-table JSON format file to CloudFormation JSON format file
 
 Export table from AWS using AWS CLI describe-table:
 ```powershell
